@@ -6,3 +6,11 @@ vich_uploader:
           uri_prefix: /uploads/banner # URL publique (pour accéder depuis Twig)
           upload_destination: '%kernel.project_dir%/public/uploads/banner'  # dossier physique
           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+          delete_on_update: true
+          delete_on_remove: true
+        logo_images:
+          uri_prefix: /uploads/logo
+          upload_destination: '%kernel.project_dir%/public/uploads/logo'
+          namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+          delete_on_update: true
+          delete_on_remove: true

@@ -1,0 +1,26 @@
+img
+{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.logo,
+.vich-image img
+{
+    width: 130px;
+    height: 65px;
+    display: block;
+}
+
+.vich-image
+{
+    display:flex;
+    flex-direction: column;
+}
+
+.vich-image img
+{
+    margin-top: 10px;
+    border: solid 1px #cecece;
+}

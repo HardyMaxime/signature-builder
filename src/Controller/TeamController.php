@@ -11,18 +11,21 @@ use App\Form\TeamFormType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\TeamRepository;
 use App\Repository\BannerRepository;
+use App\Repository\LogoRepository;
 
 final class TeamController extends AbstractController
 {
     private $entityManager;
     private $teamRepository;
     private $bannerRepository;
+    private $logoRepository;
 
-    public function __construct(EntityManagerInterface $entityManager, TeamRepository $teamRepository, BannerRepository $bannerRepository)
+    public function __construct(EntityManagerInterface $entityManager, TeamRepository $teamRepository, BannerRepository $bannerRepository, LogoRepository $logoRepository)
     {
         $this->entityManager = $entityManager;
         $this->teamRepository = $teamRepository;
         $this->bannerRepository = $bannerRepository;
+        $this->logoRepository = $logoRepository;
     }
 
     #[Route('/equipe/ajouter', name: 'team_add')]
@@ -50,10 +53,12 @@ final class TeamController extends AbstractController
     {
         $team = $this->teamRepository->find($id);
         $banner = $this->bannerRepository->findAll();
+        $logo = $this->logoRepository->findAll();
 
         return $this->render('team/signature.html.twig', [
             'team' => $team,
             'banner' => $banner[0] ?? null,
+            'logo' => $logo[0] ?? null,
         ]);
     }
 

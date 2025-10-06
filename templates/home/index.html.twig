@@ -4,20 +4,33 @@
 
 {% block body %}
     <div class="container mt-5">
-        <h1 class="mb-5">Génération de signature</h1>
-        <div class="mb-5">
-            <a href="{{ path('team_add') }}" class="btn btn-primary">Ajouter un personnel</a>
-            <a href="{{ path('banner_add') }}" class="btn btn-primary">Ajouter une bannière</a>
-            <a href="#" class="btn btn-primary">Modifier le logo</a>
-        </div>
-        <h2 class="mb-5">Vos équipes</h2>
-        {% include 'list/team.html.twig' with { teams: teams } %}
-        <h2 class="mb-5">Vos bannières</h2>
-        {% if banner is not empty %}
-            {% include 'list/banner.html.twig' with { banner: banner } %}
-        {% else %}
-            <p>Aucune bannière trouvée</p>
-            <a href="{{ path('banner_add') }}" class="btn btn-primary">Ajouter une bannière</a>
-        {% endif %}
+        <section class="section">
+            <h1 class="mb-5">Génération de signature</h1>
+        </section>
+        <section class="section row mt-5">
+            <div class="col-md-6">
+                <h2 class="mb-5">Votre bannières</h2>
+                {% if banner is not empty %}
+                    {% include 'list/banner.html.twig' with { banner: banner } %}
+                {% else %}
+                    <p>Aucune bannière trouvée</p>
+                    <a href="{{ path('banner_add') }}" class="btn btn-success">Ajouter une bannière</a>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-5">Votre logo</h2>
+                {% if logo is not empty %}
+                    {% include 'list/logo.html.twig' with { logo: logo } %}
+                {% else %}
+                    <p>Aucun logo trouvé</p>
+                    <a href="{{ path('logo_add') }}" class="btn btn-success">Ajouter un logo</a>
+                {% endif %}
+            </div>
+        </section>
+        <section class="section mt-5">
+            <h2 class="mb-5">Votre équipe</h2>
+            <a href="{{ path('team_add') }}" class="btn btn-primary mb-3">Ajouter un personnel</a>
+            {% include 'list/team.html.twig' with { teams: teams } %}
+        </section>
     </div>
 {% endblock %}
