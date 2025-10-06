@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Définir la bannière{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h2 class="mb-5">Définir la bannière</h2>
+        {% include 'form/banner.html.twig' with { form: form } %}
+    </div>
+{% endblock %}

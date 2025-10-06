@@ -1,0 +1,8 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        banner_images:                # 👈 nom du mapping (tu peux le changer)
+          uri_prefix: /uploads/banner # URL publique (pour accéder depuis Twig)
+          upload_destination: '%kernel.project_dir%/public/uploads/banner'  # dossier physique
+          namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
