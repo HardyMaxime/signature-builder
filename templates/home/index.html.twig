@@ -3,7 +3,13 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container mt-5">
+        <h1 class="mb-5">Génération de signature</h1>
+        <h2 class="mb-5">Renseignez les informations de votre équipe</h2>
         {% include 'form/team.html.twig' with { form: form } %}
+    </div>
+        <div class="container mt-5">
+        <h2 class="mb-5">Vos équipes</h2>
+        {% include 'list/team.html.twig' with { teams: teams } %}
     </div>
 {% endblock %}

@@ -33,8 +33,11 @@ final class HomeController extends AbstractController
             $this->entityManager->flush();
         }
 
+        $teams = $this->entityManager->getRepository(Team::class)->findAll();
+
         return $this->render('home/index.html.twig', [
             'form' => $form->createView(),
+            'teams' => $teams,
         ]);
     }
 }

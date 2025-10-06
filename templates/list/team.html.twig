@@ -1,0 +1,24 @@
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Personnel</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if teams is empty %}
+            <tr class="text-center">
+                <td colspan="3">Aucune équipe trouvée</td>
+            </tr>
+        {% endif %}
+        {% for team in teams %}
+            <tr>
+                <td>{{ team.id }}</td>
+                <td>{{ team.firstName }} {{ team.lastName }}</td>
+                <td>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
