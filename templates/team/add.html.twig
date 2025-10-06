@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TeamController!{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h2 class="mb-5">Renseignez les informations de votre équipe</h2>
+        {% include 'form/team.html.twig' with { form: form } %}
+    </div>
+{% endblock %}

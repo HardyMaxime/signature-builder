@@ -131,4 +131,14 @@ class Team
         $this->role = $role;
         return $this;
     }
+
+    public function getFullName(): string
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
+    public function getPhoneFormatted(): string
+    {
+        return preg_replace('/[^0-9]/', '', $this->phone);
+    }
 }

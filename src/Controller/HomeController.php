@@ -7,36 +7,15 @@ use App\Form\TeamFormType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\TeamRepository;
 
 final class HomeController extends AbstractController
 {
-
-    private $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
-
     #[Route('/', name: 'home')]
-    public function index(Request $request): Response
+    public function index(TeamRepository $teamRepository): Response
     {
-        $team = new Team();
-        $form = $this->createForm(TeamFormType::class, $team);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->entityManager->persist($team);
-            $this->entityManager->flush();
-        }
-
-        $teams = $this->entityManager->getRepository(Team::class)->findAll();
-
+        $teams = $teamRepository->findAll();
         return $this->render('home/index.html.twig', [
-            'form' => $form->createView(),
             'teams' => $teams,
         ]);
     }
