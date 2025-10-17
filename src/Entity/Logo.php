@@ -21,8 +21,8 @@ class Logo
     #[Vich\UploadableField(mapping: 'logo_images', fileNameProperty: 'imageName', size: 'imageSize')]
     #[Assert\File(
         maxSize: '5M',
-        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
-        mimeTypesMessage: 'Veuillez envoyer une image JPEG, PNG ou WEBP (max 5 Mo).'
+        mimeTypes: ['image/png'],
+        mimeTypesMessage: 'Veuillez envoyer une image PNG uniquement (max 5 Mo).'
     )]
     private ?File $imageFile = null;
 

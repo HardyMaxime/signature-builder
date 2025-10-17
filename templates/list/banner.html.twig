@@ -1,5 +1,5 @@
 <figure>
-    <img src="{{ vich_uploader_asset(banner, 'imageFile', 'App\\Entity\\Banner') }}" alt="Bannière">
+    <img src="{{ vich_uploader_asset(banner, 'imageFile', 'App\\Entity\\Banner') ~ '?v=' ~ banner.updatedAt|date('U') }}" alt="Bannière">
 </figure>
 <form action="{{ path('banner_remove') }}" method="POST">
     <input type="hidden" name="id" value="{{ banner.id }}">

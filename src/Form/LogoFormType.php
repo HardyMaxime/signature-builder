@@ -14,8 +14,8 @@ class LogoFormType extends AbstractType
     {
         $builder
             ->add('imageFile', VichImageType::class, [
-                'label' => 'Image de la bannière',
-                'required' => false,
+                'label' => 'Image de la bannière (PNG UNIQUEMENT)',
+                'required' => true,
                 'allow_delete' => false,
                 'download_uri' => false,
                 'image_uri' => true,

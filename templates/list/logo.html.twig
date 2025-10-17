@@ -1,5 +1,5 @@
 <figure>
-    <img src="{{ vich_uploader_asset(logo, 'imageFile', 'App\\Entity\\Logo') }}" class="logo"
+    <img src="{{ vich_uploader_asset(logo, 'imageFile', 'App\\Entity\\Logo') ~ '?v=' ~ logo.updatedAt|date('U') }}" class="logo"
         alt="Logo" width="130" height="65" loading="lazy" />
 </figure>
 <a href="{{ path('logo_add') }}" class="btn btn-primary">Modifier le logo</a>

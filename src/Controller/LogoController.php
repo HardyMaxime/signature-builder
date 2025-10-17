@@ -27,11 +27,21 @@ final class LogoController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid())
+        {
             $this->entityManager->persist($logo);
             $this->entityManager->flush();
             $this->addFlash('success', 'Logo ajouté avec succès');
             return $this->redirectToRoute('home');
+        }
+
+        if ($form->isSubmitted() && !$form->isValid()) 
+        {
+            $errors = $form->getErrors(true);
+            foreach ($errors as $error) {
+                $this->addFlash('error', $error->getMessage());
+            }
+            return $this->redirectToRoute('logo_add');
         }
 
         return $this->render('logo/add.html.twig', [
