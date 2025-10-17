@@ -48,6 +48,25 @@ final class TeamController extends AbstractController
         ]);
     }
 
+    #[Route('/equipe/modifier/{id}', name: 'team_update', requirements: ['id' => '\d+'])]
+    public function update(Team $team, Request $request): Response
+    {
+        $form = $this->createForm(TeamFormType::class, $team);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($team);
+            $this->entityManager->flush();
+            $this->addFlash('success', 'Personnel ajouté avec succès');
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('team/update.html.twig', [
+            'form' => $form->createView(),
+            'team' => $team
+        ]);
+    }
+
     #[Route('/equipe/signature/{id}', name: 'team_signature', requirements: ['id' => '\d+'])]
     public function signature(int $id): Response
     {
