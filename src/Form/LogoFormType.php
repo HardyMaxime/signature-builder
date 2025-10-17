@@ -18,7 +18,17 @@ class LogoFormType extends AbstractType
                 'required' => true,
                 'allow_delete' => false,
                 'download_uri' => false,
-                'image_uri' => true,
+                'image_uri' => function ($logo, $field) {
+                    if (!$logo || null === $logo->getImageName()) {
+                        return null;
+                    }
+                    $timestamp = $logo->getUpdatedAt() ? $logo->getUpdatedAt()->getTimestamp() : time();
+                    return sprintf(
+                        '/uploads/logo/%s?v=%s',
+                        $logo->getImageName(),
+                        $timestamp
+                    );
+                },
             ]);
     }
 
