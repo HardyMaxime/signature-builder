@@ -18,8 +18,9 @@
                 <td>{{ team.firstName }} {{ team.lastName }}</td>
                 <td>
                     <div class="d-flex gap-2">
-                        <a href="{{ path('team_signature', { id: team.id }) }}" class="btn btn-primary">Signature</a>
-                        <a href="{{ path('team_signature_alt', { id: team.id }) }}" class="btn btn-secondary">Signature Alt</a>
+                        <a href="{{ path('team_signature', { id: team.id }) }}" class="btn btn-primary">Modèle 1</a>
+                        <a href="{{ path('team_signature_alt', { id: team.id }) }}" class="btn btn-secondary">Modèle 2</a>
+                        <a href="{{ path('team_signature_model_3', { id: team.id }) }}" class="btn btn-secondary">Modèle 3</a>
                         <a href="{{ path('team_update', { id: team.id }) }}" class="btn btn-warning">Modifier</a>
                         <form action="{{ path('team_delete', { id: team.id }) }}" method="POST">
                             <input type="hidden" name="token" value="{{ csrf_token('team_delete') }}">

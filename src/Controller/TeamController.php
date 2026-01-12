@@ -95,6 +95,20 @@ final class TeamController extends AbstractController
         ]);
     }
 
+    #[Route('/equipe/signature-modele-3/{id}', name: 'team_signature_model_3', requirements: ['id' => '\d+'])]
+    public function signature_modele_3(int $id): Response
+    {
+        $team = $this->teamRepository->find($id);
+        $banner = $this->bannerRepository->findAll();
+        $logo = $this->logoRepository->findAll();
+
+        return $this->render('team/signature_modele_3.html.twig', [
+            'team' => $team,
+            'banner' => $banner[0] ?? null,
+            'logo' => $logo[0] ?? null,
+        ]);
+    }
+
     #[Route('/equipe/supprimer/{id}', name: 'team_delete', requirements: ['id' => '\d+'])]
     public function delete(int $id, Request $request): Response
     {
