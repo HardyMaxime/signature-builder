@@ -4,7 +4,10 @@
 
 {% block body %}
     <div class="container mt-5">
-        <h2 class="mb-5">Définir le logo</h2>
+        <hgroup>
+            <h2 class="mb-5">Définir le logo</h2>
+            <p>Le logo doit être au format 90x50 pixel (ou 180x100) </p>
+        </hgroup>
         {% include 'form/logo.html.twig' with { form: form } %}
     </div>
 {% endblock %}
